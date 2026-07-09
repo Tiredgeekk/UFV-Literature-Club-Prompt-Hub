@@ -10,7 +10,79 @@
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+.ransom-board {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 30px 0;
+
+}
+
+
+.word {
+
+    background: #fffdf5;
+
+    border: 1px solid #c7bca8;
+
+    padding: 12px 15px;
+
+    font-family: "Times New Roman", serif;
+
+    font-size: 1.2rem;
+
+    box-shadow: 2px 3px 5px rgba(0,0,0,.15);
+
+    transform: rotate(var(--rotation));
+
+    transition: .2s;
+
+}
+
+
+.word:hover {
+
+    transform: scale(1.1) rotate(0deg);
+
+}
+
+
+
+.mode-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.mode-buttons button {
+
+    font-size: .9rem;
+
+    padding: 10px 15px;
+
+}
+
+
+
+</style>
+
 </head>
+
 
 
 <body>
@@ -20,7 +92,7 @@
 
 
 <img
-src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&"
+src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&
 alt="UFV Literature Club Logo"
 class="club-logo"
 >
@@ -41,15 +113,18 @@ Creative Writing Prompt Hub
 
 
 
+
 <main class="generator-page">
 
 
 <div class="paper-card">
 
 
+
 <a class="back-button" href="index.html">
 ← Back to Prompt Hub
 </a>
+
 
 
 
@@ -60,28 +135,18 @@ Creative Writing Prompt Hub
 
 
 <p class="subtitle">
-Steal some words. Make something beautiful. (please note this generator is still in the works and is not 100% finished, its lacking a lot of words)
+Create poetry from stolen words. (please note that this generator is still a work in progress, it is not yet complete and might not have a lot of words!)
 </p>
 
-
-
-
-<div class="results word-container" id="wordContainer">
-
-
-<p>
-Your stolen words will appear here...
-</p>
-
+  
+<div class="results ransom-board" id="words">
 
 </div>
 
 
 
-
-
-<button onclick="stealWords()">
-🖤 Steal Words
+<button onclick="generate(currentMode)">
+✂️ Steal New Words
 </button>
 
 
@@ -91,7 +156,6 @@ Your stolen words will appear here...
 
 
 </main>
-
 
 
 
@@ -109,10 +173,7 @@ UFV Literature Club ✧
 <script>
 
 
-const words = [
-
-
-/* Connector Words */
+const glueWords = [
 
 "the",
 "a",
@@ -121,92 +182,110 @@ const words = [
 "because",
 "when",
 "where",
-"she",
-"he",
-"they",
 "I",
 "you",
 "my",
 "your",
+"we",
+"they",
+"she",
+"he",
 "with",
 "without",
 "before",
 "after",
-"until",
+"until"
+
+];
 
 
-/* Normal Words */
 
-"house",
-"door",
-"window",
+const normalWords = [
+
 "street",
-"rain",
+"morning",
+"window",
+"river",
+"shadow",
+"paper",
+"clock",
+"door",
+"garden",
+"letter",
+"room",
 "book",
 "coffee",
-"garden",
+"rain",
 "flower",
-"river",
 "night",
-"paper",
-"letter",
-"music",
-"shadow",
-"tree",
+"road"
+
+];
+
+
+
+const poeticWords = [
+
+"moonlight",
+"echo",
+"velvet",
+"whisper",
+"dream",
+"silence",
+"starlight",
+"memory",
+"hollow",
+"golden",
+"forever",
+"glass",
+"storm",
 "ocean",
+"stars"
+
+];
 
 
-/* Emotional Words */
 
+const sadWords = [
+
+"lost",
+"broken",
+"grief",
 "lonely",
 "forgotten",
-"fragile",
-"beautiful",
-"broken",
-"quiet",
-"endless",
-"restless",
-"gentle",
-"lost",
-"hope",
-"memory",
-"dream",
-"fear",
-"wonder",
-
-
-/* Sad/Dark Words */
-
-"ghost",
-"grief",
 "goodbye",
-"ashes",
-"silence",
-"regret",
 "empty",
-"haunted",
-"shadow",
-"echo",
-"secret",
-"ruin",
+"regret",
+"ache",
+"sorrow",
+"ghost",
+"ashes",
+"farewell"
+
+];
 
 
-/* Funny Words */
+
+const chaosWords = [
 
 "goblin",
-"pickle",
-"toaster",
-"raccoon",
 "spaghetti",
-"banana",
-"dramatic",
-"cursed",
+"feral",
+"toaster",
+"pickle",
 "cowboy",
-"microwave",
 "screaming",
+"banana",
+"suspicious",
+"dramatic",
+"chaos",
+"gremlin"
+
+];
 
 
-/* Romantic Words */
+
+const romanceWords = [
 
 "kiss",
 "touch",
@@ -214,50 +293,88 @@ const words = [
 "warmth",
 "desire",
 "secret",
-"whisper",
+"closer",
+"hands",
 "blush",
-"hunger",
+"longing",
 "forever",
-"temptation",
-
-
-/* Strange Poetry Words */
-
-"velvet",
-"moon",
-"thunder",
-"glass",
-"purple",
-"clock",
-"stars",
-"feather",
-"candle",
-"storm",
-"midnight",
-"velvet"
+"beautiful"
 
 ];
 
 
 
+let currentMode = "normal";
 
 
-function randomWord(){
 
-return words[
-Math.floor(Math.random()*words.length)
-];
+function randomItem(array){
+
+return array[Math.floor(Math.random()*array.length)];
 
 }
 
 
 
 
-function stealWords(){
+function generate(mode){
+
+
+currentMode = mode;
+
+
+
+let chosen = [...glueWords];
+
+
+
+let pool = normalWords;
+
+
+
+if(mode === "sad"){
+
+pool = sadWords.concat(poeticWords);
+
+}
+
+
+
+if(mode === "chaos"){
+
+pool = chaosWords.concat(normalWords);
+
+}
+
+
+
+if(mode === "romance"){
+
+pool = romanceWords.concat(poeticWords);
+
+}
+
+
+
+
+while(chosen.length < 20){
+
+chosen.push(randomItem(pool));
+
+}
+
+
+
+
+chosen = chosen
+.sort(()=>Math.random()-0.5)
+.slice(0,20);
+
+
 
 
 const container =
-document.getElementById("wordContainer");
+document.getElementById("words");
 
 
 
@@ -265,57 +382,47 @@ container.innerHTML = "";
 
 
 
-let stolen = [];
 
-
-
-while(stolen.length < 20){
-
-
-let word = randomWord();
-
-
-
-if(!stolen.includes(word)){
-
-stolen.push(word);
-
-}
-
-
-}
-
-
-
-
-stolen.forEach(word=>{
+chosen.forEach(word=>{
 
 
 let piece =
-document.createElement("span");
+document.createElement("div");
 
 
-piece.className =
-"word-piece";
+
+piece.className = "word";
 
 
-piece.textContent =
-word;
+
+piece.textContent = word;
+
+
+
+piece.style.setProperty(
+"--rotation",
+`${Math.floor(Math.random()*10)-5}deg`
+);
 
 
 
 container.appendChild(piece);
 
 
+
 });
+
 
 
 }
 
 
 
-</script>
 
+generate("normal");
+
+
+</script>
 
 
 </body>
