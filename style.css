@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+
+/* =========================
+   GENERAL PAGE STYLE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: #f4ead8;
+
+    color: #2b1d17;
+
+    font-family: "Libre Baskerville", Georgia, serif;
+
+    min-height: 100vh;
+}
+
+
+/* Adds a subtle old-paper feeling */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            rgba(80, 50, 30, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 8px 8px;
+
+    pointer-events: none;
+
+    opacity: 0.4;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+
+.site-header {
+
+    text-align: center;
+
+    padding: 40px 20px 25px;
+
+    background-color: #3b1f2b;
+
+    color: #f4ead8;
+
+    border-bottom: 4px solid #b7b7b7;
+
+}
+
+
+.club-logo {
+
+    width: 120px;
+
+    height: auto;
+
+    margin-bottom: 15px;
+
+}
+
+
+.site-header h1 {
+
+    margin: 10px 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3rem;
+
+    letter-spacing: 2px;
+
+}
+
+
+.site-header p {
+
+    margin: 0;
+
+    font-style: italic;
+
+    opacity: 0.9;
+
+}
+
+
+
+/* =========================
+   LIBRARY STYLE TABS
+========================= */
+
+
+.library-tabs {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 25px 15px 0;
+
+}
+
+
+
+.library-tab {
+
+    background-color: #6b2638;
+
+    color: #f8f0df;
+
+    text-decoration: none;
+
+    padding: 14px 22px;
+
+    border-radius: 8px 8px 0 0;
+
+    border: 2px solid #b7b7b7;
+
+    border-bottom: none;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.2rem;
+
+    font-weight: bold;
+
+    transition: all 0.25s ease;
+
+}
+
+
+.library-tab:hover {
+
+    background-color: #8c4054;
+
+    transform: translateY(-5px);
+
+}
+
+
+.library-tab.active {
+
+    background-color: #f4ead8;
+
+    color: #3b1f2b;
+
+    transform: translateY(-5px);
+
+}
+
+
+
+/* =========================
+   MAIN GENERATOR AREA
+========================= */
+
+
+.generator-page {
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 35px 20px;
+
+}
+
+
+
+.paper-card {
+
+    background-color: #fff8e8;
+
+    padding: 35px;
+
+    border-radius: 5px;
+
+    border: 2px solid #b7b7b7;
+
+    box-shadow:
+        0 10px 25px rgba(40,20,10,0.15);
+
+}
+
+
+
+.paper-card h2,
+.paper-card h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: #5a1f33;
+
+}
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+
+button {
+
+    background-color: #6b2638;
+
+    color: #fff8e8;
+
+    border: none;
+
+    padding: 14px 25px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-family: "Libre Baskerville", serif;
+
+    font-size: 1rem;
+
+    transition: 0.25s;
+
+}
+
+
+button:hover {
+
+    background-color: #8c4054;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+/* =========================
+   INPUTS / DROPDOWNS
+========================= */
+
+
+input,
+select,
+textarea {
+
+    background-color: #fffdf5;
+
+    border: 2px solid #b7b7b7;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    font-family: inherit;
+
+    color: #2b1d17;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    outline: none;
+
+    border-color: #6b2638;
+
+}
+
+
+
+/* =========================
+   GENERATOR RESULT BOX
+========================= */
+
+
+.prompt-result {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background-color: #f8f0df;
+
+    border-left: 5px solid #6b2638;
+
+    font-size: 1.1rem;
+
+    line-height: 1.7;
+
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+footer {
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+
+    background-color: #3b1f2b;
+
+    color: #f4ead8;
+
+    border-top: 3px solid #b7b7b7;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+/* =========================
+   MOBILE DESIGN
+========================= */
+
+
+@media (max-width: 600px) {
+
+
+    .site-header h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .library-tab {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+
+    .paper-card {
+
+        padding: 20px;
+
+    }
+
+}
