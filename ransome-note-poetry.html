@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ransom Note Poetry | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+
+<img
+src="INSERT LOGO IMAGE LINK HERE"
+alt="UFV Literature Club Logo"
+class="club-logo"
+>
+
+
+<h1>
+📚 UFV Literature Club
+</h1>
+
+
+<p>
+Creative Writing Prompt Hub
+</p>
+
+
+</header>
+
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+<a class="back-button" href="index.html">
+← Back to Prompt Hub
+</a>
+
+
+
+<h2 class="generator-title">
+✂️ Ransom Note Poetry
+</h2>
+
+
+
+<p class="subtitle">
+Steal some words. Make something beautiful.
+</p>
+
+
+
+
+<div class="results word-container" id="wordContainer">
+
+
+<p>
+Your stolen words will appear here...
+</p>
+
+
+</div>
+
+
+
+
+
+<button onclick="stealWords()">
+🖤 Steal Words
+</button>
+
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+
+<footer>
+
+UFV Literature Club ✧
+
+</footer>
+
+
+
+
+
+<script>
+
+
+const words = [
+
+
+/* Connector Words */
+
+"the",
+"a",
+"and",
+"but",
+"because",
+"when",
+"where",
+"she",
+"he",
+"they",
+"I",
+"you",
+"my",
+"your",
+"with",
+"without",
+"before",
+"after",
+"until",
+
+
+/* Normal Words */
+
+"house",
+"door",
+"window",
+"street",
+"rain",
+"book",
+"coffee",
+"garden",
+"flower",
+"river",
+"night",
+"paper",
+"letter",
+"music",
+"shadow",
+"tree",
+"ocean",
+
+
+/* Emotional Words */
+
+"lonely",
+"forgotten",
+"fragile",
+"beautiful",
+"broken",
+"quiet",
+"endless",
+"restless",
+"gentle",
+"lost",
+"hope",
+"memory",
+"dream",
+"fear",
+"wonder",
+
+
+/* Sad/Dark Words */
+
+"ghost",
+"grief",
+"goodbye",
+"ashes",
+"silence",
+"regret",
+"empty",
+"haunted",
+"shadow",
+"echo",
+"secret",
+"ruin",
+
+
+/* Funny Words */
+
+"goblin",
+"pickle",
+"toaster",
+"raccoon",
+"spaghetti",
+"banana",
+"dramatic",
+"cursed",
+"cowboy",
+"microwave",
+"screaming",
+
+
+/* Romantic Words */
+
+"kiss",
+"touch",
+"heartbeat",
+"warmth",
+"desire",
+"secret",
+"whisper",
+"blush",
+"hunger",
+"forever",
+"temptation",
+
+
+/* Strange Poetry Words */
+
+"velvet",
+"moon",
+"thunder",
+"glass",
+"purple",
+"clock",
+"stars",
+"feather",
+"candle",
+"storm",
+"midnight",
+"velvet"
+
+];
+
+
+
+
+
+function randomWord(){
+
+return words[
+Math.floor(Math.random()*words.length)
+];
+
+}
+
+
+
+
+function stealWords(){
+
+
+const container =
+document.getElementById("wordContainer");
+
+
+
+container.innerHTML = "";
+
+
+
+let stolen = [];
+
+
+
+while(stolen.length < 20){
+
+
+let word = randomWord();
+
+
+
+if(!stolen.includes(word)){
+
+stolen.push(word);
+
+}
+
+
+}
+
+
+
+
+stolen.forEach(word=>{
+
+
+let piece =
+document.createElement("span");
+
+
+piece.className =
+"word-piece";
+
+
+piece.textContent =
+word;
+
+
+
+container.appendChild(piece);
+
+
+});
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
