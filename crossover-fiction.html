@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Crossover Fiction Roulette | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <img
+        src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&"
+        alt="UFV Literature Club Logo"
+        class="club-logo"
+    >
+
+    <h1>📚 UFV Literature Club</h1>
+
+    <p>Creative Writing Prompt Hub</p>
+
+</header>
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+    <a class="back-button" href="index.html">
+        ← Back to Prompt Hub
+    </a>
+
+
+    <h2 class="generator-title">
+        🎲 Crossover Fiction Roulette
+    </h2>
+
+
+    <p class="subtitle">
+        Mash two worlds together and create your next fanfiction idea!
+    </p>
+
+
+
+    <div class="results" id="result">
+
+        Your crossover will appear here...
+
+    </div>
+
+
+
+    <button onclick="generate()">
+        🎲 Spin!
+    </button>
+
+
+
+    <hr>
+
+
+
+    <h3 class="generator-title">
+        Add Your Own Fandom
+    </h3>
+
+
+    <p class="subtitle">
+        Add a fandom to the roulette wheel!
+    </p>
+
+
+
+    <input 
+        type="text"
+        id="newFandom"
+        placeholder="Type fandom and press Enter"
+        onkeypress="addFandom(event)"
+    >
+
+
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+    UFV Literature Club ✧
+
+</footer>
+
+
+
+<script>
+
+
+let fandoms = [
+
+"Harry Potter",
+"Percy Jackson / Heroes of Olympus",
+"The Hunger Games",
+"Twilight",
+"The Lord of the Rings",
+"The Hobbit",
+"Shadow and Bone",
+"Six of Crows",
+"His Dark Materials",
+"Divergent",
+"The Maze Runner",
+"A Court of Thorns and Roses",
+"Game of Thrones / A Song of Ice and Fire",
+"Eragon / Inheritance Cycle",
+"The Chronicles of Narnia",
+"Naruto",
+"One Piece",
+"Attack on Titan",
+"My Hero Academia",
+"Demon Slayer",
+"Fullmetal Alchemist",
+"Steven Universe",
+"Adventure Time",
+"Gravity Falls",
+"The Legend of Korra",
+"Pokémon Anime",
+"Sailor Moon",
+"One Punch Man",
+"Dragon Ball Z",
+"Star Wars",
+"Star Trek",
+"Stranger Things",
+"Doctor Who",
+"MCU / Marvel Cinematic Universe",
+"DCEU / DC Extended Universe",
+"The Office (US)",
+"Friends",
+"Gossip Girl",
+"Riverdale",
+"The Witcher (Netflix)",
+"Avatar: The Last Airbender",
+"Bridgerton",
+"Fortnite",
+"Animal Crossing",
+"The Sims",
+"Zelda",
+"Pokémon Games",
+"League of Legends",
+"Hollow Knight",
+"Undertale / Deltarune",
+"Roblox",
+"Among Us",
+"Super Smash Bros",
+"Stardew Valley",
+"Shrek",
+"Disney Princesses",
+"Sonic the Hedgehog",
+"Creepypasta / Slenderman",
+"FNaF (Five Nights at Freddy’s)",
+"SpongeBob",
+"Rick and Morty",
+"JoJo’s Bizarre Adventure",
+"Death Note",
+"Black Clover",
+"Spy x Family",
+"Chainsaw Man",
+"Bluey",
+"Amphibia",
+"Invader Zim",
+"Regular Show",
+"Teen Titans",
+"Young Justice",
+"Powerpuff Girls",
+"Kim Possible",
+"Looney Tunes",
+"Tom & Jerry",
+"Over the Garden Wall",
+"Persona 5",
+"Fire Emblem",
+"Final Fantasy",
+"Kingdom Hearts",
+"Splatoon",
+"Metroid",
+"Super Mario",
+"Donkey Kong",
+"Kirby",
+"Pac-Man",
+"Plants vs Zombies",
+"Baldi’s Basics",
+"Bendy and the Ink Machine",
+"Genshin Impact",
+"Pokémon Mystery Dungeon",
+"Undertale AU",
+"Overwatch Heroes AU",
+"Super Smash Bros AU",
+"Mario Kart",
+"Luigi’s Mansion",
+"Fall Guys",
+"Brawlhalla",
+"Transformers",
+"Digimon",
+"Bakugan",
+"Ben 10",
+"Power Rangers",
+"Voltron",
+"Teenage Mutant Ninja Turtles",
+"Cyberpunk 2077"
+
+];
+
+
+
+function generate(){
+
+    if(fandoms.length < 2){
+
+        document.getElementById("result").textContent =
+        "Add more fandoms first!";
+
+        return;
+
+    }
+
+
+    let f1 =
+    fandoms[Math.floor(Math.random() * fandoms.length)];
+
+
+    let f2 =
+    fandoms[Math.floor(Math.random() * fandoms.length)];
+
+
+
+    while(f1 === f2){
+
+        f2 =
+        fandoms[Math.floor(Math.random() * fandoms.length)];
+
+    }
+
+
+
+    document.getElementById("result").textContent =
+    f1 + " × " + f2;
+
+}
+
+
+
+
+function addFandom(event){
+
+    if(event.key === "Enter"){
+
+
+        let input =
+        document.getElementById("newFandom").value.trim();
+
+
+
+        if(input && !fandoms.includes(input)){
+
+
+            fandoms.push(input);
+
+
+            document.getElementById("newFandom").value = "";
+
+
+            alert(input + " added!");
+
+        }
+
+
+        else if(fandoms.includes(input)){
+
+
+            alert("That fandom is already in the list!");
+
+        }
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
