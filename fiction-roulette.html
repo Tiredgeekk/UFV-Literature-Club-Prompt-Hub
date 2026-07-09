@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flash Fiction Roulette | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <img
+        src="INSERT LOGO IMAGE LINK HERE"
+        alt="UFV Literature Club Logo"
+        class="club-logo"
+    >
+
+    <h1>📚 UFV Literature Club</h1>
+
+    <p>Creative Writing Prompt Hub</p>
+
+</header>
+
+<main class="generator-page">
+
+<div class="paper-card">
+
+    <a class="back-button" href="index.html">← Back to Prompt Hub</a>
+
+    <h2 class="generator-title">
+        🎲 Flash Fiction Roulette
+    </h2>
+
+    <p class="subtitle">
+        Write your story before the clock runs out!
+    </p>
+
+    <div class="results" id="resultsBox">
+
+        <p><strong>Genre:</strong> <span id="genre">—</span></p>
+
+        <p><strong>Object:</strong> <span id="object">—</span></p>
+
+        <p><strong>Emotion:</strong> <span id="emotion">—</span></p>
+
+    </div>
+
+    <button onclick="generate()">
+        🎲 Roll Prompts
+    </button>
+
+</div>
+
+</main>
+
+<footer>
+
+    UFV Literature Club ✧
+
+</footer>
+
+<script>
+
+const genres = [
+    "Fantasy", "Sci-Fi", "Romance", "Mystery", "Horror",
+    "Comedy", "Historical", "Slice of Life", "Adventure",
+    "Dystopian", "Mythology", "Cyberpunk", "Fairy Tale",
+    "Drama", "Gothic", "Urban Fantasy", "Dark Fantasy",
+    "Post-Apocalyptic", "Superhero", "Paranormal",
+    "Thriller", "Steampunk", "Western", "Crime",
+    "Psychological", "Magical Realism", "Time Travel",
+    "Space Opera", "Coming of Age", "Political"
+];
+
+const objects = [
+    "Broken Clock", "Lost Letter", "Crystal Ball",
+    "Map with No North", "Pocket Watch",
+    "Sword in a Stone", "Magic Pen", "Empty Teacup",
+    "Cursed Ring", "Music Box", "Red Umbrella",
+    "Old Journal", "Silver Locket", "Typewriter",
+    "Lantern", "Locked Door", "Half-Burned Photograph",
+    "Glass Key", "Blood-Stained Glove", "Golden Compass",
+    "Sealed Envelope", "Strange Coin", "Empty Birdcage",
+    "Cracked Mirror", "Worn-Out Boots", "Snow Globe",
+    "Rusty Key", "Secret Recipe Book", "Black Feather",
+    "Broken Crown"
+];
+
+const emotions = [
+    "Joy", "Fear", "Anger", "Nostalgia", "Guilt",
+    "Awe", "Desperation", "Hope", "Jealousy",
+    "Peace", "Loneliness", "Wonder", "Regret",
+    "Amusement", "Suspicion", "Embarrassment",
+    "Relief", "Bitterness", "Confusion",
+    "Determination", "Pride", "Shame", "Grief",
+    "Curiosity", "Trust", "Betrayal",
+    "Excitement", "Contentment",
+    "Frustration", "Anticipation"
+];
+
+function randomItem(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+function generate() {
+
+    document.getElementById("genre").textContent =
+        randomItem(genres);
+
+    document.getElementById("object").textContent =
+        randomItem(objects);
+
+    document.getElementById("emotion").textContent =
+        randomItem(emotions);
+
+    const box = document.getElementById("resultsBox");
+
+    box.classList.remove("fade-in");
+
+    void box.offsetWidth;
+
+    box.classList.add("fade-in");
+
+}
+
+generate();
+
+</script>
+
+</body>
+
+</html>
