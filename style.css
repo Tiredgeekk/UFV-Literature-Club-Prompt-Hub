@@ -107,6 +107,11 @@ body::before {
 ========================= */
 
 
+/* =========================
+   LIBRARY STYLE TABS
+========================= */
+
+
 .library-tabs {
 
     display: flex;
@@ -115,9 +120,9 @@ body::before {
 
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 12px;
 
-    padding: 25px 15px 0;
+    padding: 25px 15px;
 
 }
 
@@ -125,47 +130,51 @@ body::before {
 
 .library-tab {
 
+    display: inline-block;
+
     background-color: #6b2638;
 
-    color: #f8f0df;
+    color: #f8f0df !important;
 
-    text-decoration: none;
+    text-decoration: none !important;
 
-    padding: 14px 22px;
+    padding: 14px 24px;
 
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px;
 
     border: 2px solid #b7b7b7;
 
-    border-bottom: none;
-
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 1.2rem;
+    font-size: 1.15rem;
 
     font-weight: bold;
+
+    box-shadow:
+        0 4px 8px rgba(40,20,10,0.2);
 
     transition: all 0.25s ease;
 
 }
 
 
+
 .library-tab:hover {
 
     background-color: #8c4054;
 
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 15px rgba(40,20,10,0.25);
 
 }
 
 
-.library-tab.active {
 
-    background-color: #f4ead8;
+.library-tab:visited {
 
-    color: #3b1f2b;
-
-    transform: translateY(-5px);
+    color: #f8f0df;
 
 }
 
