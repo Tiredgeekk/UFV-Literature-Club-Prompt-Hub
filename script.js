@@ -9,7 +9,8 @@ const generators = [
     "fiction-roulette.html",
     "crossover-fiction.html",
     "first-line-last-line.html",
-    "literary-scategories.html"
+    "literary-scategories.html",
+    "ransom-note-poetry.html",
 ];
 
 
