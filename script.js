@@ -8,7 +8,7 @@
 const generators = [
     "fiction-roulette.html",
     "crossover-fiction.html",
-    "first-last-line.html",
+    "first-line-last-line.html",
     "literary-scategories.html"
 ];
 
