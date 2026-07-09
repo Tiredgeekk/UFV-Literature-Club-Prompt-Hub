@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ransom Note Poetry | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.ransom-board {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 30px 0;
+
+}
+
+
+.word {
+
+    background: #fffdf5;
+
+    border: 1px solid #c7bca8;
+
+    padding: 12px 15px;
+
+    font-family: "Times New Roman", serif;
+
+    font-size: 1.2rem;
+
+    box-shadow: 2px 3px 5px rgba(0,0,0,.15);
+
+    transform: rotate(var(--rotation));
+
+    transition: .2s;
+
+}
+
+
+.word:hover {
+
+    transform: scale(1.1) rotate(0deg);
+
+}
+
+
+
+.mode-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.mode-buttons button {
+
+    font-size: .9rem;
+
+    padding: 10px 15px;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header class="site-header">
+
+
+<img
+src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&"
+alt="UFV Literature Club Logo"
+class="club-logo"
+>
+
+
+<h1>
+📚 UFV Literature Club
+</h1>
+
+
+<p>
+Creative Writing Prompt Hub
+</p>
+
+
+</header>
+
+
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+
+<a class="back-button" href="index.html">
+← Back to Prompt Hub
+</a>
+
+
+
+
+<h2 class="generator-title">
+✂️ Ransom Note Poetry
+</h2>
+
+
+
+<p class="subtitle">
+Create poetry from stolen words.
+</p>
+
+
+
+
+<div class="mode-buttons">
+
+<button onclick="generate('normal')">
+📄 Classic
+</button>
+
+
+<button onclick="generate('sad')">
+💔 Emotional Damage
+</button>
+
+
+<button onclick="generate('chaos')">
+😂 Chaos Mode
+</button>
+
+
+<button onclick="generate('romance')">
+💕 Romance
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="results ransom-board" id="words">
+
+</div>
+
+
+
+<button onclick="generate(currentMode)">
+✂️ Steal New Words
+</button>
+
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+<footer>
+
+UFV Literature Club ✧
+
+</footer>
+
+
+
+
+
+<script>
+
+
+const glueWords = [
+
+"the",
+"a",
+"and",
+"but",
+"because",
+"when",
+"where",
+"I",
+"you",
+"my",
+"your",
+"we",
+"they",
+"she",
+"he",
+"with",
+"without",
+"before",
+"after",
+"until"
+
+];
+
+
+
+const normalWords = [
+
+"street",
+"morning",
+"window",
+"river",
+"shadow",
+"paper",
+"clock",
+"door",
+"garden",
+"letter",
+"room",
+"book",
+"coffee",
+"rain",
+"flower",
+"night",
+"road"
+
+];
+
+
+
+const poeticWords = [
+
+"moonlight",
+"echo",
+"velvet",
+"whisper",
+"dream",
+"silence",
+"starlight",
+"memory",
+"hollow",
+"golden",
+"forever",
+"glass",
+"storm",
+"ocean",
+"stars"
+
+];
+
+
+
+const sadWords = [
+
+"lost",
+"broken",
+"grief",
+"lonely",
+"forgotten",
+"goodbye",
+"empty",
+"regret",
+"ache",
+"sorrow",
+"ghost",
+"ashes",
+"farewell"
+
+];
+
+
+
+const chaosWords = [
+
+"goblin",
+"spaghetti",
+"feral",
+"toaster",
+"pickle",
+"cowboy",
+"screaming",
+"banana",
+"suspicious",
+"dramatic",
+"chaos",
+"gremlin"
+
+];
+
+
+
+const romanceWords = [
+
+"kiss",
+"touch",
+"heartbeat",
+"warmth",
+"desire",
+"secret",
+"closer",
+"hands",
+"blush",
+"longing",
+"forever",
+"beautiful"
+
+];
+
+
+
+let currentMode = "normal";
+
+
+
+function randomItem(array){
+
+return array[Math.floor(Math.random()*array.length)];
+
+}
+
+
+
+
+function generate(mode){
+
+
+currentMode = mode;
+
+
+
+let chosen = [...glueWords];
+
+
+
+let pool = normalWords;
+
+
+
+if(mode === "sad"){
+
+pool = sadWords.concat(poeticWords);
+
+}
+
+
+
+if(mode === "chaos"){
+
+pool = chaosWords.concat(normalWords);
+
+}
+
+
+
+if(mode === "romance"){
+
+pool = romanceWords.concat(poeticWords);
+
+}
+
+
+
+
+while(chosen.length < 20){
+
+chosen.push(randomItem(pool));
+
+}
+
+
+
+
+chosen = chosen
+.sort(()=>Math.random()-0.5)
+.slice(0,20);
+
+
+
+
+const container =
+document.getElementById("words");
+
+
+
+container.innerHTML = "";
+
+
+
+
+chosen.forEach(word=>{
+
+
+let piece =
+document.createElement("div");
+
+
+
+piece.className = "word";
+
+
+
+piece.textContent = word;
+
+
+
+piece.style.setProperty(
+"--rotation",
+`${Math.floor(Math.random()*10)-5}deg`
+);
+
+
+
+container.appendChild(piece);
+
+
+
+});
+
+
+
+}
+
+
+
+
+generate("normal");
+
+
+</script>
+
+
+</body>
+
+</html>
