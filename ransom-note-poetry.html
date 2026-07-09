@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ransom Note Poetry | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+.ransom-board {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 30px 0;
+
+}
+
+
+.word {
+
+    background: #fffdf5;
+
+    border: 1px solid #c7bca8;
+
+    padding: 12px 15px;
+
+    font-family: "Times New Roman", serif;
+
+    font-size: 1.2rem;
+
+    box-shadow: 2px 3px 5px rgba(0,0,0,.15);
+
+    transition: .2s;
+
+}
+
+
+.word:hover {
+
+    transform: scale(1.1) rotate(0deg);
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header class="site-header">
+
+
+<img
+src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&"
+alt="UFV Literature Club Logo"
+class="club-logo"
+>
+
+
+<h1>
+📚 UFV Literature Club
+</h1>
+
+
+<p>
+Creative Writing Prompt Hub
+</p>
+
+
+</header>
+
+
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+<a class="back-button" href="index.html">
+← Back to Prompt Hub
+</a>
+
+
+
+
+<h2 class="generator-title">
+✂️ Ransom Note Poetry
+</h2>
+
+
+
+<p class="subtitle">
+Create poetry from stolen words. (please note this generator is still a work in progress, it is not 100% complete, and may not have a lot of words! thank you for understanding)
+</p>
+
+
+
+
+
+<div class="results ransom-board" id="words">
+
+</div>
+
+
+
+
+<button onclick="generate()">
+✂️ Steal Words
+</button>
+
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+
+<footer>
+
+UFV Literature Club ✧
+
+</footer>
+
+
+
+
+
+<script>
+
+
+const glueWords = [
+
+"the",
+"a",
+"and",
+"but",
+"because",
+"when",
+"where",
+"I",
+"you",
+"my",
+"your",
+"we",
+"they",
+"she",
+"he",
+"with",
+"without",
+"before",
+"after",
+"until",
+"through",
+"into",
+"from",
+"toward",
+"around",
+"beneath",
+"above",
+"between",
+"inside",
+"outside",
+"while",
+"as",
+"if",
+"though",
+"yet",
+"still",
+"only",
+"just",
+"then",
+"now",
+"once",
+"again"
+
+];
+
+
+
+const wordPool = [
+
+/* Poetic */
+
+"moonlight",
+"echo",
+"velvet",
+"whisper",
+"dream",
+"silence",
+"starlight",
+"memory",
+"hollow",
+"golden",
+"forever",
+"glass",
+"storm",
+"ocean",
+"stars",
+"twilight",
+"dawn",
+"dusk",
+"mist",
+"shadow",
+"rain",
+"fire",
+"ash",
+"wind",
+
+
+/* Nature */
+
+"flower",
+"rose",
+"thorn",
+"garden",
+"forest",
+"tree",
+"leaf",
+"river",
+"lake",
+"wave",
+"shore",
+"sand",
+"mountain",
+"valley",
+"field",
+"snow",
+"sky",
+"bird",
+"butterfly",
+"moth",
+
+
+/* Emotional */
+
+"lost",
+"broken",
+"grief",
+"lonely",
+"forgotten",
+"goodbye",
+"empty",
+"regret",
+"ache",
+"sorrow",
+"ghost",
+"ashes",
+"farewell",
+"scar",
+"wound",
+"heal",
+"survive",
+"ruin",
+
+
+/* Romantic */
+
+"love",
+"kiss",
+"touch",
+"heartbeat",
+"breath",
+"hands",
+"smile",
+"promise",
+"devotion",
+"desire",
+"longing",
+"closer",
+"beautiful",
+"secret",
+"flame",
+"spark",
+"trust",
+"home",
+
+
+/* Writing */
+
+"author",
+"writer",
+"story",
+"chapter",
+"page",
+"book",
+"novel",
+"poem",
+"letter",
+"journal",
+"diary",
+"ink",
+"pen",
+"paper",
+"library",
+"shelf",
+"bookmark",
+"sentence",
+"word",
+"title",
+"character",
+
+
+/* Fantasy */
+
+"dragon",
+"castle",
+"kingdom",
+"queen",
+"king",
+"wizard",
+"witch",
+"spell",
+"magic",
+"potion",
+"curse",
+"fairy",
+"monster",
+"knight",
+"sword",
+"crown",
+"throne",
+"tower",
+"quest",
+"treasure",
+"legend",
+"myth",
+
+
+/* Funny */
+
+"goblin",
+"spaghetti",
+"pickle",
+"banana",
+"toaster",
+"sock",
+"gremlin",
+"feral",
+"cursed",
+"dramatic",
+"potato",
+"cowboy",
+"screaming",
+"suspicious",
+"chaos",
+"noodle",
+"crab",
+"duck",
+"microwave"
+
+];
+
+
+
+
+
+function randomItem(array){
+
+return array[Math.floor(Math.random()*array.length)];
+
+}
+
+
+
+
+
+function generate(){
+
+
+let chosen = [...glueWords];
+
+
+
+while(chosen.length < 20){
+
+chosen.push(randomItem(wordPool));
+
+}
+
+
+
+
+chosen =
+chosen
+.sort(() => Math.random() - 0.5)
+.slice(0,20);
+
+
+
+
+
+const container =
+document.getElementById("words");
+
+
+
+container.innerHTML = "";
+
+
+
+
+
+chosen.forEach(word => {
+
+
+let piece =
+document.createElement("div");
+
+
+
+piece.className = "word";
+
+
+
+piece.textContent = word;
+
+
+
+piece.style.transform =
+`rotate(${Math.floor(Math.random()*10)-5}deg)`;
+
+
+
+container.appendChild(piece);
+
+
+
+});
+
+
+}
+
+
+
+generate();
+
+
+
+</script>
+
+
+</body>
+
+</html>
