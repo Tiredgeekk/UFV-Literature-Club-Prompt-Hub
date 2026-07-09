@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Literary Scattergories | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <img
+        src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d&"
+        alt="UFV Literature Club Logo"
+        class="club-logo"
+    >
+
+    <h1>📚 UFV Literature Club</h1>
+
+    <p>Creative Writing Prompt Hub</p>
+
+</header>
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+    <a class="back-button" href="index.html">
+        ← Back to Prompt Hub
+    </a>
+
+
+    <h2 class="generator-title">
+        ✒️ Literary Scattergories
+    </h2>
+
+
+    <p class="subtitle">
+        Survive the writer’s room chaos.
+    </p>
+
+
+
+    <div class="results" id="card">
+
+
+        <div class="generator-title">
+
+            Letter:
+            <span id="letter">—</span>
+
+        </div>
+
+
+        <div class="categories" id="categories">
+
+        </div>
+
+
+    </div>
+
+
+
+    <button onclick="generateRound()">
+        🎲 Generate Round
+    </button>
+
+
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+    UFV Literature Club ✦
+
+</footer>
+
+
+
+<script>
+
+
+const letters = [
+    "A","B","C","D","E","F","G","H","I",
+    "J","K","L","M","N","O","R","S","T","W"
+];
+
+
+
+const categoryPool = [
+
+"Book Title",
+"Fictional Character",
+"Fantasy Creature",
+"Magic Spell",
+"Potion Ingredient",
+"Character Flaw",
+"Character Strength",
+"Villain Trait",
+"Hero Trait",
+"Romance Trope",
+"Fantasy Trope",
+"Plot Twist",
+"Genre",
+"Story Setting",
+"Fantasy Tavern Name",
+
+"Something Found in a Library",
+"Something Found in a Dungeon",
+"Something Found in a Wizard’s Bag",
+
+"Magical Artifact",
+"Fantasy Weapon",
+"Wizard Name",
+"Dragon Name",
+
+"Monster Weakness",
+"Fantasy Food",
+"Magical Illness",
+"Forbidden Object",
+"Something Cursed",
+
+"Boss Battle Name",
+"Betrayal Reason",
+"Something Characters Fight Over",
+
+"Type of Poetry",
+"Something Used as a Bookmark",
+"Something English Teachers Overanalyze",
+
+"Edgy Protagonist Name",
+"YA Protagonist Trait",
+
+"Suspicious Potion Flavor",
+"Useless Superpower",
+"Fake Self-Help Book",
+
+"Something Definitely Haunted",
+"Weird Side Quest",
+
+"Thing a Bard Would Flirt With",
+
+"Chaos Excuse",
+
+"Emotion",
+
+"Dangerous Fantasy Object",
+"Mysterious Smell",
+"Apocalypse Survival Item",
+
+"Overused Trope",
+
+"Author Name",
+"Poet",
+"Classic Novel",
+"Children’s Book",
+
+"Fairy Tale Character",
+"Mythological Figure",
+
+"Detective",
+"Sidekick",
+"Antihero",
+"Mentor Figure",
+
+"Fictional Villain",
+"Love Interest",
+
+"Creature from Mythology",
+
+"Book Genre",
+
+"Horror Monster",
+"Fairy Tale Object",
+"Legendary Weapon",
+
+"Thing a Witch Owns",
+
+"Item in a Treasure Chest",
+
+"Secret Passage Location",
+
+"Place You’d Find a Dragon",
+
+"Fantasy Kingdom",
+"Kingdom Name",
+
+"Royal Title",
+
+"Type of Monster",
+
+"Potion Effect",
+"Magical Curse",
+"Spell Side Effect",
+
+"Quest Reward",
+
+"Something Guarded by a Monster",
+
+"Something Hidden in a Castle",
+
+"Something an Evil Queen Would Own",
+
+"Thing Found in an Ancient Ruin",
+
+"Thing You’d Read in a Spellbook",
+
+"Something Buried Underground",
+
+"Something Protected by Magic",
+
+"Creature Weakness",
+
+"Type of Magic",
+
+"Something Summoned",
+
+"Word Associated with Poetry",
+
+"Writing Technique",
+"Literary Device",
+
+"Thing Found in a Bookstore",
+
+"Something You’d Find in an English Class",
+
+"Booktok Trend",
+"Fanfiction Cliché",
+
+"Common Character Backstory",
+
+"Thing Characters Lie About",
+"Thing Characters Keep Secret",
+
+"Common Horror Setting",
+
+"Thing Found in a Haunted House",
+
+"Apocalypse Cause",
+
+"Thing Survivors Need",
+
+"Sci-Fi Technology",
+
+"Robot Trait",
+
+"Alien Ability",
+
+"NPC Problem",
+
+"Dungeon Trap",
+
+"Treasure Item",
+
+"Thing Mimics Could Disguise Themselves As",
+
+"Fantasy Shop Name",
+
+"Thing Sold at a Potion Shop"
+
+];
+
+
+
+function shuffle(array) {
+
+    let currentIndex = array.length;
+
+
+    while(currentIndex !== 0) {
+
+
+        let randomIndex =
+        Math.floor(Math.random() * currentIndex);
+
+
+        currentIndex--;
+
+
+        [
+            array[currentIndex],
+            array[randomIndex]
+        ] =
+        [
+            array[randomIndex],
+            array[currentIndex]
+        ];
+
+    }
+
+
+    return array;
+
+}
+
+
+
+
+function generateRound() {
+
+
+    document.getElementById("letter").textContent =
+        letters[Math.floor(Math.random() * letters.length)];
+
+
+
+    const shuffled =
+        shuffle([...categoryPool]);
+
+
+
+    const selected =
+        shuffled.slice(0,12);
+
+
+
+    const categoriesDiv =
+        document.getElementById("categories");
+
+
+
+    categoriesDiv.innerHTML = "";
+
+
+
+    selected.forEach(category => {
+
+
+        const div =
+        document.createElement("div");
+
+        div.className =
+        "category";
+
+
+        div.textContent =
+        category;
+
+
+        categoriesDiv.appendChild(div);
+
+
+    });
+
+
+}
+
+
+
+generateRound();
+
+
+</script>
+
+
+</body>
+
+</html>
