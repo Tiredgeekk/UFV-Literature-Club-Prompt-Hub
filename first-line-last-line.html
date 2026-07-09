@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>First & Last Line Generator | UFV Literature Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <img
+        src="https://cdn.discordapp.com/attachments/1294886341963677728/1524570040631034037/Untitled53_20260708171657.png?ex=6a5039fe&is=6a4ee87e&hm=3ece5e698c0c7fd5303b6766d2f9d08f1aee693be7d96fcb47470c257fa76b8d"
+        alt="UFV Literature Club Logo"
+        class="club-logo"
+    >
+
+    <h1>📚 UFV Literature Club</h1>
+
+    <p>Creative Writing Prompt Hub</p>
+
+</header>
+
+
+
+<main class="generator-page">
+
+
+<div class="paper-card">
+
+
+    <a class="back-button" href="index.html">
+        ← Back to Prompt Hub
+    </a>
+
+
+    <h2 class="generator-title">
+        ✍️ First & Last Line
+    </h2>
+
+
+    <p class="subtitle">
+        Connect the beginning… to the end.
+    </p>
+
+
+
+    <div class="results" id="resultsBox">
+
+
+        <p><strong>First Line:</strong></p>
+
+        <p id="firstLine">
+            —
+        </p>
+
+
+
+        <div class="button-group">
+
+            <button onclick="rerollFirst()">
+                🎲 New First
+            </button>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+        <p><strong>Last Line:</strong></p>
+
+        <p id="lastLine">
+            —
+        </p>
+
+
+
+        <div class="button-group">
+
+            <button onclick="rerollLast()">
+                🎲 New Last
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <button class="main-btn" onclick="generate()">
+        🎲 Generate Both
+    </button>
+
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+    UFV Literature Club ✧
+
+</footer>
+
+
+
+<script>
+
+
+const firstLines = [
+
+"I knew something was wrong when the dog started talking.",
+
+"The letter arrived without a return address.",
+
+"Nobody noticed when the sky changed color.",
+
+"It all started with a single wrong step.",
+
+"I wasn't supposed to be there that night.",
+
+"The clock struck thirteen.",
+
+"Everyone else heard thunder. I heard a voice.",
+
+"The door had never been locked before.",
+
+"I found the photograph buried in my backyard.",
+
+"This wasn't the first time I'd died."
+
+];
+
+
+
+const lastLines = [
+
+"And that's why I never went back.",
+
+"But I was already too late.",
+
+"Some things are better left forgotten.",
+
+"I wish I had made a different choice.",
+
+"And then everything went quiet.",
+
+"It was exactly where I left it.",
+
+"That was the moment I understood everything.",
+
+"But no one would ever believe me.",
+
+"I should have listened.",
+
+"And this time, there was no coming back."
+
+];
+
+
+
+function randomItem(list) {
+
+    return list[Math.floor(Math.random() * list.length)];
+
+}
+
+
+
+function generate() {
+
+    document.getElementById("firstLine").textContent =
+        randomItem(firstLines);
+
+
+    document.getElementById("lastLine").textContent =
+        randomItem(lastLines);
+
+
+    animateBox();
+
+}
+
+
+
+function rerollFirst() {
+
+    document.getElementById("firstLine").textContent =
+        randomItem(firstLines);
+
+
+    animateBox();
+
+}
+
+
+
+function rerollLast() {
+
+    document.getElementById("lastLine").textContent =
+        randomItem(lastLines);
+
+
+    animateBox();
+
+}
+
+
+
+function animateBox() {
+
+    const box =
+    document.getElementById("resultsBox");
+
+
+    box.classList.remove("fade-in");
+
+
+    void box.offsetWidth;
+
+
+    box.classList.add("fade-in");
+
+}
+
+
+
+generate();
+
+
+</script>
+
+
+</body>
+
+</html>
