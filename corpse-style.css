@@ -315,11 +315,7 @@ button:hover {
 
 
 
-
-
-
 /* FINAL STORY */
-
 
 #final-story {
 
@@ -335,17 +331,18 @@ button:hover {
 
     margin-top: 20px;
 
-    width: auto;
+    width: 100%;
 
     max-width: 100%;
 
-    overflow-wrap: break-word;
+    box-sizing: border-box;
 
-    word-wrap: break-word;
+    overflow-wrap: anywhere;
 
-    white-space: normal;
+    word-break: break-word;
 
 }
+
 
 
 .story-paragraph {
@@ -354,13 +351,13 @@ button:hover {
 
     line-height: 1.6;
 
-    overflow-wrap: break-word;
+    max-width: 100%;
 
-    word-break: normal;
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
 
 }
-
-
 
 
 
