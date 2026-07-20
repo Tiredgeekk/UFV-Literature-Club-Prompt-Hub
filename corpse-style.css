@@ -1,0 +1,423 @@
+/* =========================
+   LITERARY EXQUISITE CORPSE
+   STYLE SHEET
+========================= */
+
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    background: #f9f6f4;
+
+    font-family: "Georgia", serif;
+
+    color: #3b1f2b;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+
+}
+
+
+
+
+
+/* HEADER */
+
+.corpse-header {
+
+    text-align: center;
+
+    margin-top: 40px;
+
+    width: 90%;
+
+    max-width: 800px;
+
+}
+
+
+
+.club-logo {
+
+    width: 120px;
+
+    height: auto;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.corpse-header h1 {
+
+    color: #6b0f1a;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 10px;
+
+    text-shadow: 1px 1px #b6b6b6;
+
+}
+
+
+
+.corpse-header p {
+
+    color: #7c6d72;
+
+    font-style: italic;
+
+}
+
+
+
+
+
+
+
+/* MAIN CARD */
+
+
+.corpse-container {
+
+    width: 90%;
+
+    max-width: 750px;
+
+    margin-top: 30px;
+
+}
+
+
+
+
+
+.paper-card {
+
+    background: white;
+
+    border: 2px solid #d5c7cb;
+
+    border-radius: 1.5rem;
+
+    padding: 2.5rem;
+
+    box-shadow: 0 6px 20px rgba(107,15,26,.15);
+
+    position: relative;
+
+    text-align: center;
+
+}
+
+
+
+.paper-card::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: -15px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    color: #6b0f1a;
+
+    padding: 0 10px;
+
+    font-size: 1.2rem;
+
+}
+
+
+
+
+
+
+
+/* TITLES */
+
+
+h2 {
+
+    color: #6b0f1a;
+
+    font-size: 2rem;
+
+}
+
+
+
+h3 {
+
+    color: #6b0f1a;
+
+}
+
+
+
+
+
+
+
+/* INPUTS */
+
+
+textarea,
+input {
+
+    width: 90%;
+
+    padding: 12px;
+
+    margin: 10px 0 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid #cfc4c7;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    background: #faf7f5;
+
+}
+
+
+
+textarea {
+
+    min-height: 90px;
+
+    resize: vertical;
+
+}
+
+
+
+
+
+label {
+
+    display: block;
+
+    text-align: left;
+
+    margin-left: 5%;
+
+    color: #6b0f1a;
+
+    font-weight: bold;
+
+}
+
+
+
+
+
+
+
+/* BUTTONS */
+
+
+button {
+
+    background: #6b0f1a;
+
+    color: white;
+
+    border: none;
+
+    padding: .8rem 2rem;
+
+    border-radius: .8rem;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    box-shadow: 0 4px 12px rgba(107,15,26,.25);
+
+    transition: .25s;
+
+}
+
+
+
+button:hover {
+
+    background: #8a1d2e;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+
+
+
+
+/* STORY INFO */
+
+
+.story-info,
+.final-info {
+
+
+    background: #faf7f5;
+
+    border-left: 4px solid #6b0f1a;
+
+    padding: 15px;
+
+    margin: 20px 0;
+
+    text-align: left;
+
+    border-radius: 10px;
+
+
+}
+
+
+
+
+
+.warning {
+
+    color: #6b0f1a;
+
+    font-weight: bold;
+
+    font-size: 1.2rem;
+
+}
+
+
+
+
+
+
+
+/* FINAL STORY */
+
+
+#final-story {
+
+
+    text-align: left;
+
+    background: #fffdf8;
+
+    border: 1px solid #d5c7cb;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-top: 20px;
+
+
+}
+
+
+
+.story-paragraph {
+
+
+    margin-bottom: 20px;
+
+    line-height: 1.6;
+
+}
+
+
+
+
+
+
+
+/* SCREEN CONTROL */
+
+
+.hidden {
+
+    display: none;
+
+}
+
+
+
+
+
+
+
+/* FOOTER */
+
+
+footer {
+
+    margin: 30px;
+
+    color: #999;
+
+    font-style: italic;
+
+}
+
+
+
+
+
+
+/* SMALL ANIMATION */
+
+
+section {
+
+    animation: fadeIn .3s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.98);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
