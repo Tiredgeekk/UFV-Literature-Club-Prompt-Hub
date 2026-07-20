@@ -261,35 +261,22 @@ function revealStory() {
 
 
 
-    storyParts.forEach((part, index) => {
+ storyParts.forEach((part) => {
 
 
-
-        let paragraph = document.createElement("p");
-
+    let paragraph = document.createElement("p");
 
 
-        paragraph.className = "story-paragraph";
+    paragraph.className = "story-paragraph";
 
 
-
-        paragraph.innerHTML =
-
-            "<strong>Part " +
-
-            (index + 1) +
-
-            ":</strong><br>" +
-
-            part;
+    paragraph.textContent = part;
 
 
-
-        finalBox.appendChild(paragraph);
-
+    finalBox.appendChild(paragraph);
 
 
-    });
+});
 
 
 
