@@ -323,7 +323,6 @@ button:hover {
 
 #final-story {
 
-
     text-align: left;
 
     background: #fffdf8;
@@ -336,20 +335,30 @@ button:hover {
 
     margin-top: 20px;
 
+    width: auto;
+
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+
+    word-wrap: break-word;
+
+    white-space: normal;
 
 }
 
 
-
 .story-paragraph {
-
 
     margin-bottom: 20px;
 
     line-height: 1.6;
 
-}
+    overflow-wrap: break-word;
 
+    word-break: normal;
+
+}
 
 
 
