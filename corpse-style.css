@@ -1,335 +1,332 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Literary Exquisite Corpse ✒️</title>
-
-<link rel="stylesheet" href="corpse-style.css">
-
-</head>
-
-
-<body>
-
-
-<header class="site-header">
-
-    <!-- CLUB LOGO -->
-    <img
-        src="https://i.imgur.com/nVopjPV.png"
-        alt="UFV Literature Club Logo"
-        class="club-logo"
-    >
-
-    <h1>✒️ Literary Exquisite Corpse</h1>
-
-    <p>
-        Collaboratively write a story one hidden paragraph at a time.
-    </p>
-
-</header>
-
-
-
-
-<main class="corpse-container">
-
-
-<div class="paper-card">
-
-
-    <a href="index.html" class="back-button">
-        ← Back to Prompt Hub
-    </a>
-
-
-
-    <!-- =====================
-         SETUP SCREEN
-    ===================== -->
-
-    <section id="setup-screen">
-
-        <h2>Story Setup</h2>
-
-        <p>
-            Create the world before the chaos begins!
-        </p>
-
-
-        <label for="characters">
-            Characters:
-        </label>
-
-        <textarea
-            id="characters"
-            placeholder="Example: A detective, a ghost, a suspicious librarian"
-        ></textarea>
-
-
-
-        <label for="setting">
-            Setting:
-        </label>
-
-        <textarea
-            id="setting"
-            placeholder="Example: An abandoned Victorian mansion"
-        ></textarea>
-
-
-
-        <label for="genre">
-            Genre:
-        </label>
-
-        <textarea
-            id="genre"
-            placeholder="Example: Mystery Fantasy"
-        ></textarea>
-
-
-
-        <label for="prompt">
-            Optional Prompt:
-        </label>
-
-        <textarea
-            id="prompt"
-            placeholder="Example: Someone is hiding a secret"
-        ></textarea>
-
-
-
-        <label for="writer-count">
-            Number of Writers:
-        </label>
-
-        <input
-            type="number"
-            id="writer-count"
-            min="2"
-            max="50"
-            value="6"
-        >
-
-
-
-        <label for="difficulty">
-            Difficulty:
-        </label>
-
-        <select id="difficulty">
-
-            <option value="normal">
-                🪦 Normal — No Peeking
-            </option>
-
-            <option value="easy">
-                🕯️ Easy — Last Two Words
-            </option>
-
-        </select>
-
-
-        <p class="difficulty-description">
-
-            <strong>Easy:</strong>
-            See the last two words of the previous writer's final sentence.
-
-            <br>
-
-            <strong>Normal:</strong>
-            See absolutely nothing from previous writers.
-
-        </p>
-
-
-
-        <button onclick="startStory()">
-            📖 Start Story
-        </button>
-
-    </section>
-
-
-
-
-    <!-- =====================
-         PASS DEVICE SCREEN
-    ===================== -->
-
-    <section id="pass-screen" class="hidden">
-
-        <h2>📱 Pass the Device</h2>
-
-        <p>
-            Hand the device to the next writer.
-        </p>
-
-        <p class="warning">
-            🚫 No peeking!
-        </p>
-
-        <button onclick="readyWriter()">
-            I'm Ready ✒️
-        </button>
-
-    </section>
-
-
-
-
-    <!-- =====================
-         WRITING SCREEN
-    ===================== -->
-
-    <section id="writing-screen" class="hidden">
-
-        <h2 id="writer-number">
-            Writer 1
-        </h2>
-
-
-
-        <div class="story-info">
-
-            <p>
-                <strong>Characters:</strong>
-                <span id="display-characters"></span>
-            </p>
-
-            <p>
-                <strong>Setting:</strong>
-                <span id="display-setting"></span>
-            </p>
-
-            <p>
-                <strong>Genre:</strong>
-                <span id="display-genre"></span>
-            </p>
-
-            <p>
-                <strong>Prompt:</strong>
-                <span id="display-prompt"></span>
-            </p>
-
-        </div>
-
-
-
-
-        <!-- =====================
-             PREVIOUS WRITER HINT
-        ===================== -->
-
-        <div
-            id="previous-hint"
-            class="previous-hint hidden"
-        >
-
-            <strong>
-                🕯️ A tiny glimpse from the previous writer:
-            </strong>
-
-            <p id="hint-text"></p>
-
-        </div>
-
-
-
-
-        <h3>
-            Write your paragraph:
-        </h3>
-
-
-
-        <textarea
-            id="writer-input"
-            placeholder="Write your part of the story..."
-        ></textarea>
-
-
-
-        <button onclick="submitLine()">
-            Next Writer →
-        </button>
-
-    </section>
-
-
-
-
-    <!-- =====================
-         REVEAL SCREEN
-    ===================== -->
-
-    <section id="reveal-screen" class="hidden">
-
-        <h2>
-            ✨ The Finished Story ✨
-        </h2>
-
-
-
-        <div class="final-info">
-
-            <p>
-                <strong>Characters:</strong>
-                <span id="final-characters"></span>
-            </p>
-
-            <p>
-                <strong>Setting:</strong>
-                <span id="final-setting"></span>
-            </p>
-
-            <p>
-                <strong>Genre:</strong>
-                <span id="final-genre"></span>
-            </p>
-
-        </div>
-
-
-
-
-        <div id="final-story"></div>
-
-
-
-        <button onclick="resetGame()">
-            🔄 Create Another Story
-        </button>
-
-    </section>
-
-
-</div>
-
-
-</main>
-
-
-
-
-<footer>
-
-    UFV Literature Club Edition ✦
-
-</footer>
-
-
-
-
-<script src="corpse-script.js"></script>
-
-
-</body>
-
-</html>
+@import url(‘https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap’);
+
+/* =========================
+RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+/* =========================
+BODY
+========================= */
+
+body {
+background: #f4ead8;
+color: #2b1d17;
+font-family: “Libre Baskerville”, serif;
+min-height: 100vh;
+line-height: 1.6;
+}
+
+body::before {
+content: “”;
+position: fixed;
+inset: 0;
+
+background:
+    radial-gradient(
+        rgba(70, 45, 30, .08) 1px,
+        transparent 1px
+    );
+background-size: 8px 8px;
+opacity: .35;
+pointer-events: none;
+
+}
+
+/* =========================
+HEADER
+========================= */
+
+.site-header {
+text-align: center;
+padding: 35px 20px 20px;
+}
+
+.club-logo {
+width: 130px;
+margin-bottom: 15px;
+}
+
+.site-header h1 {
+font-family: “Cormorant Garamond”, serif;
+font-size: 3rem;
+color: #3b1f2b;
+}
+
+.site-header p {
+color: #6b2638;
+font-style: italic;
+}
+
+/* =========================
+BACK BUTTON
+========================= */
+
+.back-button {
+display: inline-block;
+text-decoration: none;
+color: #6b2638;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.back-button:hover {
+color: #8c4054;
+}
+
+/* =========================
+MAIN CONTAINER
+========================= */
+
+.corpse-container {
+max-width: 850px;
+margin: 30px auto;
+padding: 20px;
+}
+
+/* =========================
+PAPER CARD
+========================= */
+
+.paper-card {
+background: #fff8e8;
+border: 2px solid #b7b7b7;
+border-radius: 15px;
+padding: 35px;
+
+box-shadow:
+    0 8px 20px rgba(0, 0, 0, .15);
+
+}
+
+/* =========================
+TITLES
+========================= */
+
+h2 {
+font-family: “Cormorant Garamond”, serif;
+font-size: 2.5rem;
+color: #5a1f33;
+text-align: center;
+margin-bottom: 15px;
+}
+
+h3 {
+color: #5a1f33;
+}
+
+/* =========================
+TEXT / INFO BOXES
+========================= */
+
+.story-info,
+.final-info {
+background: #fcf8ef;
+border-left: 4px solid #6b2638;
+padding: 15px;
+margin: 20px 0;
+text-align: left;
+border-radius: 10px;
+}
+
+.warning {
+color: #6b2638;
+font-weight: bold;
+}
+
+/* =========================
+INPUTS
+========================= */
+
+input,
+textarea,
+select {
+width: 100%;
+padding: 12px;
+margin: 10px 0 20px;
+
+border-radius: 8px;
+border: 2px solid #b7b7b7;
+font-family: inherit;
+font-size: 1rem;
+background: white;
+color: #2b1d17;
+
+}
+
+textarea {
+min-height: 100px;
+resize: vertical;
+}
+
+label {
+display: block;
+color: #6b2638;
+font-weight: bold;
+margin-top: 10px;
+}
+
+/* =========================
+DIFFICULTY SELECTOR
+========================= */
+
+select {
+cursor: pointer;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+outline: none;
+border-color: #6b2638;
+}
+
+.difficulty-description {
+background: #fcf8ef;
+
+border-left: 4px solid #6b2638;
+padding: 12px 15px;
+margin: -5px 0 20px;
+border-radius: 8px;
+font-size: .9rem;
+color: #5f4a4a;
+
+}
+
+.difficulty-description strong {
+color: #6b2638;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+button {
+display: block;
+margin: 20px auto;
+
+background: #6b2638;
+color: white;
+border: none;
+border-radius: 8px;
+padding: 14px 25px;
+font-family: inherit;
+font-size: 1rem;
+cursor: pointer;
+transition: .25s;
+
+}
+
+button:hover {
+background: #8c4054;
+transform: translateY(-2px);
+}
+
+/* =========================
+PREVIOUS WRITER HINT
+========================= */
+
+.previous-hint {
+background: #f4ead8;
+
+border: 2px dashed #6b2638;
+border-radius: 10px;
+padding: 15px;
+margin: 20px 0;
+text-align: center;
+
+}
+
+.previous-hint strong {
+display: block;
+
+color: #6b2638;
+margin-bottom: 5px;
+
+}
+
+#hint-text {
+font-family: “Cormorant Garamond”, serif;
+
+font-size: 1.5rem;
+font-weight: 600;
+font-style: italic;
+margin: 8px 0 0;
+color: #3b1f2b;
+/* Makes sure long hints don't break the box */
+overflow-wrap: anywhere;
+
+}
+
+/* =========================
+FINAL STORY
+========================= */
+
+#final-story {
+background: #fcf8ef;
+
+border: 2px solid #b7b7b7;
+border-radius: 12px;
+padding: 25px;
+margin: 25px 0;
+text-align: left;
+overflow-wrap: anywhere;
+
+}
+
+.story-paragraph {
+margin-bottom: 20px;
+line-height: 1.8;
+}
+
+/* =========================
+SCREEN CONTROL
+========================= */
+
+.hidden {
+display: none !important;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer {
+text-align: center;
+
+margin-top: 40px;
+padding: 20px;
+color: #6f6265;
+font-style: italic;
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+.paper-card {
+    padding: 22px;
+}
+.corpse-container {
+    padding: 10px;
+    margin: 15px auto;
+}
+.site-header h1 {
+    font-size: 2.3rem;
+}
+h2 {
+    font-size: 2rem;
+}
+#hint-text {
+    font-size: 1.3rem;
+}
+
+}
