@@ -2,13 +2,10 @@
 // LITERARY EXQUISITE CORPSE
 // JAVASCRIPT
 // =====================================
-// =====================================
-// GAME VARIABLES
-// =====================================
-let difficulty = "normal";
 let totalWriters = 0;
 let currentWriter = 1;
 let storyParts = [];
+let difficulty = "normal";
 let storyInfo = {
     characters: "",
     setting: "",
@@ -28,9 +25,7 @@ function startStory() {
     storyInfo.prompt =
         document.getElementById("prompt").value;
     totalWriters =
-        parseInt(
-            document.getElementById("writer-count").value
-        );
+        parseInt(document.getElementById("writer-count").value);
     difficulty =
         document.getElementById("difficulty").value;
     if (!totalWriters || totalWriters < 2) {
@@ -64,78 +59,45 @@ function showWritingInfo() {
     document.getElementById("display-prompt").textContent =
         storyInfo.prompt || "None provided";
     document.getElementById("writer-input").value = "";
-    // Show the appropriate previous-writer hint
-    showPreviousHint();
-}
-// =====================================
-// SHOW PREVIOUS WRITER HINT
-// =====================================
-function showPreviousHint() {
-    const hintBox =
-        document.getElementById("previous-hint");
-    const hintText =
-        document.getElementById("hint-text");
-    // If the hint elements don't exist,
-    // stop instead of breaking the game.
-    if (!hintBox || !hintText) {
+    // =================================
+    // PREVIOUS WORD PEEK
+    // =================================
+    const peekBox =
+        document.getElementById("previous-peek");
+    const previousWords =
+        document.getElementById("previous-words");
+    // Normal mode OR first writer:
+    // hide the previous words completely.
+    if (difficulty === "normal" || storyParts.length === 0) {
+        peekBox.classList.add("hidden");
+        previousWords.textContent = "";
         return;
     }
-    // Normal mode = no hint.
-    // Writer 1 also gets no hint because
-    // there is no previous writer.
-    if (
-        difficulty !== "easy" ||
-        storyParts.length === 0
-    ) {
-        hintBox.classList.add("hidden");
-        hintText.textContent = "";
-        return;
-    }
-    const previousParagraph =
+    // Easier mode:
+    // Get the previous writer's paragraph.
+    const previousPart =
         storyParts[storyParts.length - 1];
-    // Find the sentences in the paragraph.
-    const sentences =
-        previousParagraph.match(
-            /[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g
-        );
-    let lastSentence = "";
-    if (sentences && sentences.length > 0) {
-        lastSentence =
-            sentences[sentences.length - 1].trim();
-    }
-    // Remove punctuation from the end.
-    lastSentence =
-        lastSentence
-            .replace(/[.!?]+$/, "")
-            .trim();
-    // Split the sentence into words.
+    // Split the paragraph into words.
     const words =
-        lastSentence.split(/\s+/);
-    // Take only the final two words.
+        previousPart.trim().split(/\s+/);
+    // Get the last two words.
     const lastWords =
         words.slice(-2).join(" ");
-    hintText.textContent =
-        lastWords;
-    hintBox.classList.remove("hidden");
+    previousWords.textContent =
+        "..." + lastWords;
+    peekBox.classList.remove("hidden");
 }
 // =====================================
 // SUBMIT WRITER PARAGRAPH
 // =====================================
 function submitLine() {
-    const paragraph =
-        document
-            .getElementById("writer-input")
-            .value
-            .trim();
+    let paragraph =
+        document.getElementById("writer-input").value.trim();
     if (paragraph === "") {
-        alert(
-            "Please write something before continuing!"
-        );
+        alert("Please write something before continuing!");
         return;
     }
-    // Save the paragraph.
     storyParts.push(paragraph);
-    // Check if this was the final writer.
     if (currentWriter >= totalWriters) {
         revealStory();
     }
@@ -154,11 +116,11 @@ function revealStory() {
         storyInfo.setting || "None provided";
     document.getElementById("final-genre").textContent =
         storyInfo.genre || "None provided";
-    const finalBox =
+    let finalBox =
         document.getElementById("final-story");
     finalBox.innerHTML = "";
     storyParts.forEach((part) => {
-        const paragraph =
+        let paragraph =
             document.createElement("p");
         paragraph.className =
             "story-paragraph";
@@ -172,20 +134,15 @@ function revealStory() {
 // CHANGE SCREENS
 // =====================================
 function changeScreen(screenID) {
-    document
-        .getElementById("setup-screen")
+    document.getElementById("setup-screen")
         .classList.add("hidden");
-    document
-        .getElementById("pass-screen")
+    document.getElementById("pass-screen")
         .classList.add("hidden");
-    document
-        .getElementById("writing-screen")
+    document.getElementById("writing-screen")
         .classList.add("hidden");
-    document
-        .getElementById("reveal-screen")
+    document.getElementById("reveal-screen")
         .classList.add("hidden");
-    document
-        .getElementById(screenID)
+    document.getElementById(screenID)
         .classList.remove("hidden");
 }
 // =====================================
@@ -201,17 +158,10 @@ function resetGame() {
     document.getElementById("genre").value = "";
     document.getElementById("prompt").value = "";
     document.getElementById("writer-count").value = 6;
-    // Reset difficulty to Normal
-    const difficultySelect =
-        document.getElementById("difficulty");
-    if (difficultySelect) {
-        difficultySelect.value = "normal";
-    }
-    // Hide any leftover hint
-    const hintBox =
-        document.getElementById("previous-hint");
-    if (hintBox) {
-        hintBox.classList.add("hidden");
-    }
+    document.getElementById("difficulty").value = "normal";
+    document.getElementById("previous-peek")
+        .classList.add("hidden");
+    document.getElementById("previous-words")
+        .textContent = "";
     changeScreen("setup-screen");
 }
