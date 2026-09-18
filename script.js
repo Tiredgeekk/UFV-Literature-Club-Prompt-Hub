@@ -11,7 +11,7 @@ const generators = [
     "first-line-last-line.html",
     "literary-scategories.html",
     "ransom-note-poetry.html",
-    "lineroulette.html",
+    "prompt-mashup.html",
 ];
 
 
