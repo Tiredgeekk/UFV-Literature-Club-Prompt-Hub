@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Mashup Generator | UFV Literature Club</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<img
+    src="https://i.imgur.com/nVopjPV.png"
+    alt="UFV Literature Club Logo"
+    class="club-logo"
+>
+<h1>📚 UFV Literature Club</h1>
+<p>Creative Writing Prompt Hub</p>
+</header>
+<main class="generator-page">
+<div class="paper-card">
+<a class="back-button" href="index.html">
+    ← Back to Prompt Hub
+</a>
+<h2 class="generator-title">
+    🎲 Prompt Mashup
+</h2>
+<p class="subtitle">
+    Five prompts. One story. Good luck.
+</p>
+<div class="results" id="resultsBox">
+    <p>
+        <strong>Genre:</strong>
+        <span id="genre">—</span>
+    </p>
+    <div class="button-group">
+        <button onclick="rerollGenre()">
+            🎲 New Genre
+        </button>
+    </div>
+    <hr>
+    <p>
+        <strong>Object:</strong>
+        <span id="object">—</span>
+    </p>
+    <div class="button-group">
+        <button onclick="rerollObject()">
+            🎲 New Object
+        </button>
+    </div>
+    <hr>
+    <p>
+        <strong>Emotion:</strong>
+        <span id="emotion">—</span>
+    </p>
+    <div class="button-group">
+        <button onclick="rerollEmotion()">
+            🎲 New Emotion
+        </button>
+    </div>
+    <hr>
+    <p><strong>First Line:</strong></p>
+    <p id="firstLine">
+        —
+    </p>
+    <div class="button-group">
+        <button onclick="rerollFirst()">
+            🎲 New First
+        </button>
+    </div>
+    <hr>
+    <p><strong>Last Line:</strong></p>
+    <p id="lastLine">
+        —
+    </p>
+    <div class="button-group">
+        <button onclick="rerollLast()">
+            🎲 New Last
+        </button>
+    </div>
+</div>
+<button class="main-btn" onclick="generate()">
+    🎲 Generate Mashup
+</button>
+</div>
+</main>
+<footer>
+UFV Literature Club ✧
+</footer>
+<script>
+const genres = [
+    "Fantasy", "Sci-Fi", "Romance", "Mystery", "Horror",
+    "Comedy", "Historical", "Slice of Life", "Adventure",
+    "Dystopian", "Mythology", "Cyberpunk", "Fairy Tale",
+    "Drama", "Gothic", "Urban Fantasy", "Dark Fantasy",
+    "Post-Apocalyptic", "Superhero", "Paranormal",
+    "Thriller", "Steampunk", "Western", "Crime",
+    "Psychological", "Magical Realism", "Time Travel",
+    "Space Opera", "Coming of Age", "Political"
+];
+const objects = [
+    "Broken Clock", "Lost Letter", "Crystal Ball",
+    "Map with No North", "Pocket Watch",
+    "Sword in a Stone", "Magic Pen", "Empty Teacup",
+    "Cursed Ring", "Music Box", "Red Umbrella",
+    "Old Journal", "Silver Locket", "Typewriter",
+    "Lantern", "Locked Door", "Half-Burned Photograph",
+    "Glass Key", "Blood-Stained Glove", "Golden Compass",
+    "Sealed Envelope", "Strange Coin", "Empty Birdcage",
+    "Cracked Mirror", "Worn-Out Boots", "Snow Globe",
+    "Rusty Key", "Secret Recipe Book", "Black Feather",
+    "Broken Crown"
+];
+const emotions = [
+    "Joy", "Fear", "Anger", "Nostalgia", "Guilt",
+    "Awe", "Desperation", "Hope", "Jealousy",
+    "Peace", "Loneliness", "Wonder", "Regret",
+    "Amusement", "Suspicion", "Embarrassment",
+    "Relief", "Bitterness", "Confusion",
+    "Determination", "Pride", "Shame", "Grief",
+    "Curiosity", "Trust", "Betrayal",
+    "Excitement", "Contentment",
+    "Frustration", "Anticipation"
+];
+const firstLines = [
+    "I knew something was wrong when the dog started talking.",
+    "The letter arrived without a return address.",
+    "Nobody noticed when the sky changed color.",
+    "It all started with a single wrong step.",
+    "I wasn't supposed to be there that night.",
+    "The clock struck thirteen.",
+    "Everyone else heard thunder. I heard a voice.",
+    "The door had never been locked before.",
+    "I found the photograph buried in my backyard.",
+    "This wasn't the first time I'd died."
+];
+const lastLines = [
+    "And that's why I never went back.",
+    "But I was already too late.",
+    "Some things are better left forgotten.",
+    "I wish I had made a different choice.",
+    "And then everything went quiet.",
+    "It was exactly where I left it.",
+    "That was the moment I understood everything.",
+    "But no one would ever believe me.",
+    "I should have listened.",
+    "And this time, there was no coming back."
+];
+function randomItem(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+function generate() {
+    document.getElementById("genre").textContent =
+        randomItem(genres);
+    document.getElementById("object").textContent =
+        randomItem(objects);
+    document.getElementById("emotion").textContent =
+        randomItem(emotions);
+    document.getElementById("firstLine").textContent =
+        randomItem(firstLines);
+    document.getElementById("lastLine").textContent =
+        randomItem(lastLines);
+    animateBox();
+}
+function rerollGenre() {
+    document.getElementById("genre").textContent =
+        randomItem(genres);
+    animateBox();
+}
+function rerollObject() {
+    document.getElementById("object").textContent =
+        randomItem(objects);
+    animateBox();
+}
+function rerollEmotion() {
+    document.getElementById("emotion").textContent =
+        randomItem(emotions);
+    animateBox();
+}
+function rerollFirst() {
+    document.getElementById("firstLine").textContent =
+        randomItem(firstLines);
+    animateBox();
+}
+function rerollLast() {
+    document.getElementById("lastLine").textContent =
+        randomItem(lastLines);
+    animateBox();
+}
+function animateBox() {
+    const box =
+        document.getElementById("resultsBox");
+    box.classList.remove("fade-in");
+    void box.offsetWidth;
+    box.classList.add("fade-in");
+}
+generate();
+</script>
+</body>
+</html>
